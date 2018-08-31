@@ -198,7 +198,7 @@ namespace DX12GameProgramming
         {
             var computePsoDesc = new ComputePipelineStateDescription // TODO: API suggestion: class to struct.
             {
-                RootSignature = _rootSignature,
+                RootSignaturePointer = _rootSignature,
                 ComputeShader = _shaders["vecAddCS"],
                 Flags = PipelineStateFlags.None
             };

@@ -679,7 +679,8 @@ namespace DX12GameProgramming
                 PrimitiveTopologyType = PrimitiveTopologyType.Triangle,
                 RenderTargetCount = 1,
                 SampleDescription = new SampleDescription(MsaaCount, MsaaQuality),
-                DepthStencilFormat = DepthStencilFormat
+                DepthStencilFormat = DepthStencilFormat,
+                StreamOutput = new StreamOutputDescription() //find out how this should actually be done later
             };
             opaquePsoDesc.RenderTargetFormats[0] = BackBufferFormat;
 
@@ -724,7 +725,7 @@ namespace DX12GameProgramming
 
             var horzBlurPso = new ComputePipelineStateDescription
             {
-                RootSignature = _postProcessRootSignature,
+                RootSignaturePointer = _postProcessRootSignature,
                 ComputeShader = _shaders["horzBlurCS"],
                 Flags = PipelineStateFlags.None
             };
@@ -737,7 +738,7 @@ namespace DX12GameProgramming
 
             var vertBlurPso = new ComputePipelineStateDescription
             {
-                RootSignature = _postProcessRootSignature,
+                RootSignaturePointer = _postProcessRootSignature,
                 ComputeShader = _shaders["vertBlurCS"],
                 Flags = PipelineStateFlags.None
             };

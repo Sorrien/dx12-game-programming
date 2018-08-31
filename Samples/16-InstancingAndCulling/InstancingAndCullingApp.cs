@@ -537,7 +537,8 @@ namespace DX12GameProgramming
                 PrimitiveTopologyType = PrimitiveTopologyType.Triangle,
                 RenderTargetCount = 1,
                 SampleDescription = new SampleDescription(MsaaCount, MsaaQuality),
-                DepthStencilFormat = DepthStencilFormat
+                DepthStencilFormat = DepthStencilFormat,
+                StreamOutput = new StreamOutputDescription() //find out how this should actually be done later
             };
             opaquePsoDesc.RenderTargetFormats[0] = BackBufferFormat;
 

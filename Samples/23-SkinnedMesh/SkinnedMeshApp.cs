@@ -950,7 +950,8 @@ namespace DX12GameProgramming
                 PrimitiveTopologyType = PrimitiveTopologyType.Triangle,
                 RenderTargetCount = 1,
                 SampleDescription = new SampleDescription(MsaaCount, MsaaQuality),
-                DepthStencilFormat = DepthStencilFormat
+                DepthStencilFormat = DepthStencilFormat,
+                StreamOutput = new StreamOutputDescription() //find out how this should actually be done later
             };
             opaquePsoDesc.RenderTargetFormats[0] = BackBufferFormat;
             _psos["opaque"] = Device.CreateGraphicsPipelineState(opaquePsoDesc);
@@ -1022,7 +1023,7 @@ namespace DX12GameProgramming
             //
 
             GraphicsPipelineStateDescription ssaoPsoDesc = opaquePsoDesc.Copy();
-            ssaoPsoDesc.InputLayout = null;
+            ssaoPsoDesc.InputLayout = new InputLayoutDescription();
             ssaoPsoDesc.RootSignature = _ssaoRootSignature;
             ssaoPsoDesc.VertexShader = _shaders["ssaoVS"];
             ssaoPsoDesc.PixelShader = _shaders["ssaoPS"];
@@ -1032,6 +1033,7 @@ namespace DX12GameProgramming
             ssaoPsoDesc.RenderTargetFormats[0] = Ssao.AmbientMapFormat;
             ssaoPsoDesc.SampleDescription = new SampleDescription(1, 0);
             ssaoPsoDesc.DepthStencilFormat = Format.Unknown;
+            //ssaoPsoDesc.StreamOutput = new StreamOutputDescription(); //find out how this should actually be done later
             _psos["ssao"] = Device.CreateGraphicsPipelineState(ssaoPsoDesc);
 
             //

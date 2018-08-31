@@ -330,7 +330,18 @@ namespace DX12GameProgramming
                 PrimitiveTopologyType = PrimitiveTopologyType.Triangle,
                 RenderTargetCount = 1,
                 SampleDescription = new SampleDescription(MsaaCount, MsaaQuality),
-                DepthStencilFormat = DepthStencilFormat
+                DepthStencilFormat = DepthStencilFormat,
+
+                //Flags = PipelineStateFlags.None,
+                //IBStripCutValue = IndexBufferStripCutValue.Disabled,
+                //NodeMask = 0,
+                //CachedPSO = new CachedPipelineState(),
+                //DomainShader = new ShaderBytecode(),               
+                //GeometryShader = new ShaderBytecode(),
+                //HullShader = new ShaderBytecode(),
+                
+                //RenderTargetFormats = new Format[] { },
+                StreamOutput = new StreamOutputDescription()
             };
             psoDesc.RenderTargetFormats[0] = BackBufferFormat;
 

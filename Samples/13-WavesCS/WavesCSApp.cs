@@ -670,7 +670,8 @@ namespace DX12GameProgramming
                 PrimitiveTopologyType = PrimitiveTopologyType.Triangle,
                 RenderTargetCount = 1,
                 SampleDescription = new SampleDescription(MsaaCount, MsaaQuality),
-                DepthStencilFormat = DepthStencilFormat
+                DepthStencilFormat = DepthStencilFormat,
+                StreamOutput = new StreamOutputDescription() //find out how this should actually be done later
             };
             opaquePsoDesc.RenderTargetFormats[0] = BackBufferFormat;
             _psos["opaque"] = Device.CreateGraphicsPipelineState(opaquePsoDesc);
@@ -719,7 +720,7 @@ namespace DX12GameProgramming
 
             var wavesDisturbPSO = new ComputePipelineStateDescription
             {
-                RootSignature = _wavesRootSignature,
+                RootSignaturePointer = _wavesRootSignature,
                 ComputeShader = _shaders["wavesDisturbCS"],
                 Flags = PipelineStateFlags.None
             };
@@ -731,7 +732,7 @@ namespace DX12GameProgramming
 
             var wavesUpdatePSO = new ComputePipelineStateDescription
             {
-                RootSignature = _wavesRootSignature,
+                RootSignaturePointer = _wavesRootSignature,
                 ComputeShader = _shaders["wavesUpdateCS"],
                 Flags = PipelineStateFlags.None
             };

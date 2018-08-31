@@ -230,7 +230,7 @@ namespace DX12GameProgramming
             // Bind the random vector map.
             cmdList.SetGraphicsRootDescriptorTable(3, _randomVectorMapGpuSrv);
 
-            cmdList.PipelineState = _ssaoPso;
+            cmdList.PipelineState = _ssaoPso; 
 
             // Draw fullscreen quad.
             cmdList.SetVertexBuffers(0, null, 0);
@@ -241,7 +241,7 @@ namespace DX12GameProgramming
             // Change back to GENERIC_READ so we can read the texture in a shader.
             cmdList.ResourceBarrierTransition(_ambientMap0, ResourceStates.RenderTarget, ResourceStates.GenericRead);
 
-            BlurAmbientMap(cmdList, currFrame, blurCount);
+            BlurAmbientMap(cmdList, currFrame, blurCount); 
         }
 
         public void Dispose()
